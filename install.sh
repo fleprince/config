@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # HOME FOLDER
 for file in `ls -a files/home/`; do
     if [ "${file}" != "." -a "${file}" != ".." ]; then
