@@ -53,7 +53,7 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-set guifont=Monospace\ 9
+set guifont=Monospace\ 8
 
 nnoremap <silent> <F8> :TlistToggle<CR>
 nnoremap <silent> <F7> :NERDTree<CR>
@@ -99,7 +99,9 @@ set whichwrap=<,>,[,]
 autocmd CursorMoved * silent! exe printf('match CursorLine /\<%s\>/', expand('<cword>'))
 
 " Créé le squelette et entête des nouveaux fichiers
-
+let g:email = "floleprince@gmail.com"
+let g:user = "Florian Leprince"
+let g:license = "GNU GPL V2"
 
 set scrolloff=2
 nnoremap <C-e> 3<C-e>
