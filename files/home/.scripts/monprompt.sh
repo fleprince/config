@@ -2,6 +2,7 @@
 
 function do_prompt()
 {
+    NOIR="\[\e[30;1m\]"
     ROUGE="\[\e[31;1m\]"
     VERT="\[\e[32;1m\]"
     JAUNE="\[\e[33;1m\]"
@@ -23,16 +24,17 @@ function do_prompt()
     TIME=$(date +%H:%M)
     GITVAL=$(__git_ps1 " %s ")
 
-    #
     LIGNE=" ${USER}@${HOSTNAME}  ${newPWD} ${GITVAL}"
 
     MAX_COLUMNS=$((COLUMNS))
-    TOP=""
-    while [ ${#TOP} -lt ${MAX_COLUMNS} ]; do
-        TOP="${TOP}_"
+    TOPFAKE="   ${TIME} "
+    TOP="${fBLANC} \$(if [[ \$? == 0 ]]; then echo \"${BLEU}\342\234\223\"; else echo \"${ROUGE}\342\234\227\"; fi) ${NOIR}${TIME} ${RESET}"
+    while [ ${#TOPFAKE} -lt ${MAX_COLUMNS} ]; do
+        TOP="_${TOP}"
+        TOPFAKE="_${TOPFAKE}"
     done
 
-    LIGNE1="${fNOIR} ${USER}@${HOSTNAME} ${fBLEU} ${newPWD} ${fCYAN}${GITVAL}${RESET}"
+    LIGNE1="${fNOIR} ${USER}@${HOSTNAME} ${fBLEU} \W ${fCYAN}${GITVAL}${RESET}"
 
     PS1="${TOP}\n${LIGNE1} "
 }

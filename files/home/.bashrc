@@ -119,7 +119,10 @@ if [ ! -d "${MOUNT_BIN}/Drones/" ]; then
     binmount
 fi
 
-export PATH=$PATH:/opt/arm-2012.03/bin/:~/Projects/mykonos/dragon/Binaries/pclinuxMYKONOS3-x86/master/staging/usr/bin/:~/.scripts/
+export PATH=$PATH:/opt/arm-2012.03/bin/
+export PATH=$PATH:~/Projects/mykonos/dragon/Binaries/pclinuxMYKONOS3-x86/master/staging/usr/bin/
+export PATH=$PATH:~/Projects/mykonos/dragon/Binaries/pclinuxMYKONOS3-x64/master/staging/usr/bin/
+export PATH=$PATH:~/.scripts/
 
 #PS1='\[\e[40m\] \u@\h \[\e[44m\] \W \[\e[46m\]$(__git_ps1 " %s ")\[\e[m\] '
 source ~/.scripts/monprompt.sh

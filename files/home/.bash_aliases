@@ -17,7 +17,7 @@ alias cp='cp -i'
 alias gvim='gvim -p'
 
 # dragon tools
-alias cnx='telnet 192.168.2.1'
+alias cnx='telnet `connect.sh`'
 alias dragon='cd ~/Projects/mykonos/dragon'
 alias libar-clean='~/.scripts/libAR_cleanAll.sh'
 alias libar-clean-dbg='~/.scripts/libAR_cleanAll_debug.sh'
