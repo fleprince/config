@@ -74,9 +74,6 @@ alias mygreph='mygrep --include=*.h'
 alias docmount="sudo mount -t cifs //nas.parrot.biz/docs ${MOUNT_DOC} -o user=f.leprince,rw"
 alias binmount="sudo mount -t cifs //nas.parrot.biz/binarypackages ${MOUNT_BIN} -o user=f.leprince,rw"
 
-# USB Storage PLF loader
-alias ukey='yes | cp -f ~/.pinstrc/jpsumo_lucie_updater_payload.plf /media/florian/Transcend/jumpingsumo_usb_update.plf && sync && umount /media/florian/Transcend'
-
 # others
 alias F='make flash'
 alias K9='kill -9'
