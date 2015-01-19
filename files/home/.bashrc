@@ -106,6 +106,9 @@ if ! shopt -oq posix; then
 fi
 
 # auto mount
+
+MOUNT_DOC="/mnt/doc"
+MOUNT_BIN="/mnt/bin"
 if [ ! -d "${MOUNT_DOC}/PROJETS/" ]; then
     if [ ! -d "${MOUNT_DOC}" ]; then
         sudo mkdir ${MOUNT_DOC}

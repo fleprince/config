@@ -17,7 +17,6 @@ alias cp='cp -i'
 alias gvim='gvim -p'
 
 # dragon tools
-alias cnx='telnet `connect.sh`'
 alias dragon='cd ~/Projects/mykonos/dragon'
 alias libar-clean='~/.scripts/libAR_cleanAll.sh'
 alias libar-clean-dbg='~/.scripts/libAR_cleanAll_debug.sh'
@@ -71,8 +70,8 @@ alias mygrepch='mygrep --include=*.c --include=*.cpp --include=*.h'
 alias mygreph='mygrep --include=*.h'
 
 # mount NAS folders
-alias docmount="sudo mount -t cifs //nas.parrot.biz/docs ${MOUNT_DOC} -o user=f.leprince,rw"
-alias binmount="sudo mount -t cifs //nas.parrot.biz/binarypackages ${MOUNT_BIN} -o user=f.leprince,rw"
+alias docmount="sudo mount -t cifs //nas.parrot.biz/docs /mnt/doc/ -o user=f.leprince,rw"
+alias binmount="sudo mount -t cifs //nas.parrot.biz/binarypackages /mnt/bin/ -o user=f.leprince,rw"
 
 # others
 alias F='make flash'
