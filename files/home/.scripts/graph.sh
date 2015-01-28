@@ -1,34 +1,81 @@
 #!/bin/bash -
 # gnuplot script for blackbox plotting
 
+print_help()
+{
+    echo "Usage: $0 [-f FILENAME] [PATTERN]" >&2
+    echo "       where PATTERN is a part of the logged variable name"
+}
 
-if [ -z "${1}" ]; then
-    echo "Missing variable pattern"
-    echo "graph.sh <pattern>"
+# checking and installing tools
+if ! hash blackbox_parser 2>/dev/null; then
+    echo "You must first compile blackbox_parser for pclinux"
+    echo "and add it to your PATH environment variable."
+    exit
+fi
+
+if ! hash gnuplot 2>/dev/null; then
+    echo "gnuplot not found. Installing it..."
+    sudo apt-get install gnuplot-x11
+fi
+
+if ! hash gnuplot 2>/dev/null; then
+    echo "Installation failed. Leaving"
     exit
 fi
 
 
+
+# getting file
+
 NEWERFILE=`ls -t light_run* | head -n 1`
+INFILE=""
+PATTERN=""
+
+while [ ! -z $1 ]; do
+    if [ "${1}" == "-f" ]; then
+        shift
+        if [ -z "${1}" ]; then
+            echo "-f option missing argument"
+            print_help
+            exit 1
+        else
+            INFILE="${1}"
+        fi
+    else
+        PATTERN+="${1} "
+    fi
+    shift
+done
 
 OUTFILE="out.csv"
 
-if [ -z "${NEWERFILE}" ]; then
-    echo "No blackbox binary file found."
-    echo "Abort"
-    exit
+if [ -z "${PATTERN}" ]; then
+    PATTERN="index"
+fi
+
+if [ -z "${INFILE}" ]; then
+    if [ -f "${NEWERFILE}" ]; then
+        INFILE="${NEWERFILE}"
+    fi
+fi
+
+if [ ! -f "${INFILE}" ]; then
+    echo "${INFILE} doesn't seem to exist or being a valid file."
+    if [ ! -f "${NEWERFILE}" ]; then
+        echo "Abort"
+        exit 1
+    else
+        echo "Using the most recent blackbox file instead."
+        INFILE="${NEWERFILE}"
+    fi
 fi
 
 if [ ! -f $OUTFILE ]; then
-    blackbox_parser ${NEWERFILE} ${OUTFILE} > /dev/null
+    blackbox_parser ${INFILE} ${OUTFILE} > /dev/null
 fi
 
-HEAD=`grep ${1} ${OUTFILE}`
-
-if [ -z "${HEAD}" ]; then
-    echo "Pattern not found in csv file"
-    exit
-fi
+HEAD=`head -n 1 ${OUTFILE}`
 
 col_eol=1
 col_count=1
@@ -47,7 +94,15 @@ do
         col_eol=0
     fi
 
-    res=`echo ${title} | grep ${1}`
+    res=""
+    for word in `echo "$PATTERN"`
+    do
+        res=`echo ${title} | grep ${word}`
+        if [ ! -z ${res} ]; then
+            break
+        fi
+    done
+
     if [ ! -z ${res} ]; then
         if [ -z ${cols} ]; then
             cols="${col_count}"
