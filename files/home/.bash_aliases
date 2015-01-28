@@ -18,8 +18,8 @@ alias gvim='gvim -p'
 
 # dragon tools
 alias dragon='cd ~/Projects/mykonos/dragon'
-alias libar-clean='~/.scripts/libAR_cleanAll.sh'
-alias libar-clean-dbg='~/.scripts/libAR_cleanAll_debug.sh'
+alias dragon2='cd ~/Projects/mykonos/dragon2'
+alias dragon3='cd ~/Projects/mykonos/dragon3'
 alias bam='./build.sh -p ardrone3 -a'
 alias bajm='./build.sh -p ardrone3 -aj'
 alias bafm='./build.sh -p ardrone3 -af'
