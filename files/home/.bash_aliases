@@ -64,10 +64,10 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias myfind='find . -name'
-alias mygrep='grep -rnE --exclude=.#* --exclude=*.svn-base'
+alias mygrep='grep -rnEi --exclude=.#* --exclude=*.svn-base'
 alias mygrepc='mygrep --include=*.c --include=*.cpp'
-alias mygrepch='mygrep --include=*.c --include=*.cpp --include=*.h'
-alias mygreph='mygrep --include=*.h'
+alias mygrepch='mygrep --include=*.c --include=*.cpp --include=*.h --include=*.hpp'
+alias mygreph='mygrep --include=*.h --include=*.hpp'
 
 # mount NAS folders
 alias docmount="sudo mount -t cifs //nas.parrot.biz/docs /mnt/doc/ -o user=f.leprince,rw"

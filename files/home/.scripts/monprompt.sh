@@ -34,7 +34,22 @@ function do_prompt()
         TOPFAKE="_${TOPFAKE}"
     done
 
-    LIGNE1="${fNOIR} ${USER}@${HOSTNAME} ${fBLEU} \W ${fCYAN}${GITVAL}${RESET}"
+    PROJECTNAME=""
+    PROJECTFOLDERS="/home/florian/Projects/mykonos/ /home/florian/Projects/bacasable/"
+    for PPATH in $PROJECTFOLDERS ; do
+        tpath=`pwd | grep "$PPATH"`
+        if [ ! -z "$tpath" ]; then
+            pathlevel=$(($(grep -o "/" <<< "$PPATH" | wc -l)+1))
+            pfolder=`pwd | cut -d '/' -f $pathlevel`
+            if [ "$PWD" != "$PPATH$pfolder" ]; then
+                PROJECTNAME=" $pfolder "
+            fi
+            break;
+        fi
+    done
+    #PROJECTNAME=
+
+    LIGNE1="${fNOIR} ${HOSTNAME} ${fVERT}${PROJECTNAME}${fBLEU} \W ${fCYAN}${GITVAL}${RESET}"
 
     PS1="${TOP}\n${LIGNE1} "
 }

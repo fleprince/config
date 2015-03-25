@@ -1,0 +1,15 @@
+#!/bin/bash
+
+LIBS="gst-plugins-base gst-plugins-good gst-parrot-p7"
+
+LIBC=""
+LIBDC=""
+
+for lib in $LIBS
+do
+    LIBC+=" ${lib}-clean"
+    LIBDC+=" ${lib}-dirclean"
+done
+
+./build.sh -p ardrone3 $LIBDC $LIBC -j
+

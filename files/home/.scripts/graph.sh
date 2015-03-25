@@ -42,6 +42,9 @@ while [ ! -z $1 ]; do
         else
             INFILE="${1}"
         fi
+    elif [ "${1}" == "-h" ]; then
+        print_help
+        exit 0
     else
         PATTERN+="${1} "
     fi
