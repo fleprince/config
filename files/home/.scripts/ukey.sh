@@ -9,7 +9,7 @@ for mtabline in `cat /etc/mtab`; do
     device=`echo $mtabline | cut -f 1 -d ' '`
     udevline=`udevadm info -q path -n $device 2>&1 |grep usb`
     if [ $? == 0 ] ; then
-        LAST_PLUGGED=`echo $mtabline | cut -f 2 -d ' '`
+        LAST_PLUGGED=`echo $mtabline | cut -f 2 -d ' ' | sed -e 's/\\\040/ /g'`
     fi
 done
 
