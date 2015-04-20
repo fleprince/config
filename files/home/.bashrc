@@ -110,16 +110,22 @@ fi
 MOUNT_DOC="/mnt/doc"
 MOUNT_BIN="/mnt/bin"
 if [ ! -d "${MOUNT_DOC}/PROJETS/" ]; then
-    if [ ! -d "${MOUNT_DOC}" ]; then
-        sudo mkdir ${MOUNT_DOC}
+    ping -c 1 parrot.biz &> /dev/null
+    if [ $? -eq 0 ]; then
+        if [ ! -d "${MOUNT_DOC}" ]; then
+            sudo mkdir ${MOUNT_DOC}
+        fi
+        docmount
     fi
-    docmount
 fi
 if [ ! -d "${MOUNT_BIN}/Drones/" ]; then
-    if [ ! -d "${MOUNT_BIN}" ]; then
-        sudo mkdir ${MOUNT_BIN}
+    ping -c 1 parrot.biz &> /dev/null
+    if [ $? -eq 0 ]; then
+        if [ ! -d "${MOUNT_BIN}" ]; then
+            sudo mkdir ${MOUNT_BIN}
+        fi
+        binmount
     fi
-    binmount
 fi
 
 export PATH=$PATH:/opt/arm-2012.03/bin/
