@@ -111,6 +111,7 @@ nnoremap <C-Down> 3<C-e>
 nnoremap <C-Up> 3<C-y>
 
 set foldmethod=syntax
+set foldlevel=20
 
 execute pathogen#infect()
 
