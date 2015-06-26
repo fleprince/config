@@ -106,7 +106,7 @@ if ! shopt -oq posix; then
 fi
 
 # auto mount
-
+#if [ "$HOSTCLASS" == "PARROT" ]; then
 MOUNT_DOC="/mnt/doc"
 MOUNT_BIN="/mnt/bin"
 if [ ! -d "${MOUNT_DOC}/PROJETS/" ]; then
@@ -127,6 +127,7 @@ if [ ! -d "${MOUNT_BIN}/Drones/" ]; then
         binmount
     fi
 fi
+#fi
 
 export PATH=$PATH:/opt/arm-2012.03/bin/
 export PATH=$PATH:~/Projects/mykonos/dragon/Binaries/pclinuxMYKONOS3-x86/master/staging/usr/bin/
