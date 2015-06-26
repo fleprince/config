@@ -1,0 +1,21 @@
+#! /bin/sh
+#
+# lttgtk.sh
+# Copyright (C) 2015 Florian Leprince <floleprince@gmail.com>
+#
+# Distributed under terms of the GNU GPL V2 license.
+#
+
+if [ -z "${1}" ]; then
+    echo "lttgtk must get one folder"
+    exit 1
+fi
+
+fold=".lttgtk-tmp"
+mkdir -p "${fold}/"
+
+lttv_2_6_3X -m textDump -t ${1} > ${fold}/trace.txt
+ltt2lxt_2_6_3X -c ${fold}/trace.txt
+gtkwave -A ${fold}/trace.txt.lxt
+
+rm -rf ${fold}
