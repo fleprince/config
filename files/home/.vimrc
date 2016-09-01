@@ -98,6 +98,9 @@ set whichwrap=<,>,[,]
 
 autocmd CursorMoved * silent! exe printf('match CursorLine /\<%s\>/', expand('<cword>'))
 
+" Display all files on open file dialog
+let b:browsefilter = "All Files (*.*)\t*.*\n"
+
 " Créé le squelette et entête des nouveaux fichiers
 let g:email = "floleprince@gmail.com"
 let g:user = "Florian Leprince"

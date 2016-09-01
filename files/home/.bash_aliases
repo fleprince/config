@@ -17,8 +17,7 @@ alias cp='cp -i'
 alias gvim='gvim -p'
 
 # dragon tools
-alias dragon='cd ~/Projects/mykonos/dragon'
-alias dragon3='cd ~/Projects/mykonos/dragon3'
+alias dragon='cd ~/Projects/repos/dragon'
 
 # displays
 alias ls='ls --color=auto --group-directories-first -h'
